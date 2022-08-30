@@ -1,5 +1,5 @@
 class Character {
-    
+
     constructor(data) { // create and initialize an object instance of that class
         this.id = data.id;
         this.movie_id = data.movie.id;
@@ -18,17 +18,17 @@ class Character {
         const likesNum = document.createElement("h5");
         const likeBttn = document.createElement("button");
         const deleteBttn = document.createElement("button");
-    
+
         card.id = `card-${this.id}`;
         card.className = "card";
-        
+
         image.src = this.image;
         image.alt = `${this.name} image`;
-        
+
         characterName.textContent = this.name;
         characterQuote.textContent = this.quote;
         characterLikes.textContent = "Likes: ";
-        
+
         likesNum.className = "like-num";
         likesNum.textContent = this.likes;
         likeBttn.className = "like-bttn";
@@ -38,17 +38,17 @@ class Character {
             e.stopPropagation();
             ++this.likes; //increment likes
             fetch(`http://localhost:3000/characters/${this.id}`, {
-              method: 'PATCH',
-              headers: {
-                'Content-Type': 'application/json',
-                'Accept': 'application/json'
-              },
-              body: JSON.stringify({likes: this.likes})
+                method: 'PATCH',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                body: JSON.stringify({ likes: this.likes })
             })
             likesNum.textContent = this.likes; // Updating DOM with textContent property of likesNum element to a new number
-        
+
         })
-    
+
         deleteBttn.id = "delete-character";
         deleteBttn.textContent = "Delete";
         deleteBttn.className = "delete-bttn";
@@ -56,19 +56,20 @@ class Character {
 
         deleteBttn.addEventListener("click", (e) => {
             e.stopPropagation();
+            e.preventDefault();
             fetch(`http://localhost:3000/characters/${this.id}`, {
-            method: 'DELETE'
+                method: 'DELETE'
             })
             card.remove();
             // renderMovie();
             // this.location.reload()
         });
-    
+
         card.append(image, characterName, characterQuote, characterLikes, likesNum, likeBttn, deleteBttn);
         charactersContainer.appendChild(card);
 
         return card
-        
+
     }
 }
 
