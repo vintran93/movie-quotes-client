@@ -1,7 +1,7 @@
 class ApiService {
     constructor() {
-        this.baseURL = 'http://localhost:3000'
-    } 
+        this.baseURL = 'https://movie-quotes-backend.herokuapp.com/'
+    }
     // used await/async to refactor vs. using .then and callbacks and for readability
 
     // fetch all movies

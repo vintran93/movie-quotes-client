@@ -37,7 +37,7 @@ class Character {
         likeBttn.addEventListener("click", (e) => {
             e.stopPropagation();
             ++this.likes; //increment likes
-            fetch(`http://localhost:3000/characters/${this.id}`, {
+            fetch(`https://movie-quotes-backend.herokuapp.com/characters/${this.id}`, {
                 method: 'PATCH',
                 headers: {
                     'Content-Type': 'application/json',
@@ -57,7 +57,7 @@ class Character {
         deleteBttn.addEventListener("click", (e) => {
             e.stopPropagation();
             e.preventDefault();
-            fetch(`http://localhost:3000/characters/${this.id}`, {
+            fetch(`https://movie-quotes-backend.herokuapp.com/characters/${this.id}`, {
                 method: 'DELETE'
             })
             card.remove();
