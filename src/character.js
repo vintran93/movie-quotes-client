@@ -61,8 +61,6 @@ class Character {
                 method: 'DELETE'
             })
             card.remove();
-            // renderMovie();
-            // this.location.reload()
         });
 
         card.append(image, characterName, characterQuote, characterLikes, likesNum, likeBttn, deleteBttn);

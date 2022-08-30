@@ -1,5 +1,5 @@
 class Movie {
-    constructor(data){ // create and initialize an object instance of that class
+    constructor(data) { // create and initialize an object instance of that class
         this.id = data.id
         this.title = data.title
         this.characters = data.characters
@@ -10,7 +10,7 @@ class Movie {
         <li>
             <a href="#" data-id="${this.id}">${this.title}</a>
         </li>
-        ` 
+        `
     }
     // show the movie title and all the characters in the movie
     renderMovie() {
@@ -18,33 +18,14 @@ class Movie {
         <h3> ${this.title} - Characters </h3>
             <br>
             <button id="add-character" data-id="${this.id}">Add Character</button> |
-
             <button id='delete-bttn' data-id=${this.id} onclick="deleteMovie()">Delete Movie</button> 
-
             <div id="add-character-div">
-
             </div>
-
-            
-
         <br>
         <br>
         `
-    }   
+    }
 }
-
-
-// possible features to add:
-
-// sorting by character/movie title alphabetical order
-
-// update character/movie
-
-// search bar
-
-// refactor
-
-// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function
 
 
 

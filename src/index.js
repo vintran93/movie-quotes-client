@@ -1,13 +1,13 @@
-const apiService = new ApiService() 
-let main = document.getElementById('main') // 2 global variables to use everywhere else
+const apiService = new ApiService()
+let main = document.getElementById('main')
 let baseURL = 'http://localhost:3000'
 const charactersContainer = document.getElementById('characters-container');
 
-const init = () => { // turn on the application at start on index.js master brain of program / variable init is a function / anonymous func
+const init = () => {
     bindEventListeners()
 }
 
-// bindEventhandlers to buttons on page
+
 function bindEventListeners() {
     document.getElementById('movie-form').addEventListener('click', displayCreateForm) // display movie form function after a click | chaining
     document.getElementById('movies').addEventListener('click', renderMovies) // calls renderMovies function after 'movies ID' clicked
@@ -24,15 +24,6 @@ async function renderMovies() {
     attachClicksToLinks()
 }
 
-// async function renderCharacters() {  
-//     const characters = await apiService.fetchCharacters()
-//     main.innerHTML = ""
-//     characters.forEach(character => {
-//         const newCharacter = new Character(character)
-//         main.innerHTML += newCharacter.render()
-//     })
-// }
-
 function displayCreateForm() {
     let formDiv = document.querySelector("#new-movie-form")
     let html = `
@@ -42,13 +33,13 @@ function displayCreateForm() {
             <input type="submit">
         </form>
     `
-    formDiv.innerHTML = html // storing formDiv into the closing tags of innerhtml
-    document.querySelector('#movie-create-form').addEventListener('submit', createMovie) // eventlistener submit of form
+    formDiv.innerHTML = html
+    document.querySelector('#movie-create-form').addEventListener('submit', createMovie)
 }
 
-function displayCharacterForm(e) { 
+function displayCharacterForm(e) {
 
-    let formDiv = document.querySelector("#add-character-div") 
+    let formDiv = document.querySelector("#add-character-div")
     let html = `
         <form id="character-create-form">
             <br>
@@ -73,14 +64,14 @@ function displayCharacterForm(e) {
 
 async function createMovie(e) {
     e.preventDefault()
-    // let main = document.getElementById('main')
+
     let movie = {
-        title: e.target.querySelector("#title").value // event.target (submit button clicked) look for ID title given value
+        title: e.target.querySelector("#title").value
     }
 
     let data = await apiService.fetchCreateMovie(movie)
-    let newMovie = new Movie(data) // newMovie varialbe set equal to new Movie(data) key word new passed in data variable
-    main.innerHTML += newMovie.render() // keep what I have and add to bottom
+    let newMovie = new Movie(data)
+    main.innerHTML += newMovie.render()
     attachClicksToLinks()
     clearForm()
 }
@@ -89,7 +80,7 @@ async function createCharacter(e) {
     e.preventDefault()
 
     const movieId = document.querySelector("#add-character").dataset.id
-    let character = { 
+    let character = {
         name: e.target.querySelector("#name").value,
         quote: e.target.querySelector("#quote").value,
         image: e.target.querySelector('#image').value,
@@ -99,7 +90,7 @@ async function createCharacter(e) {
 
     let data = await apiService.fetchCreateCharacter(character)
     let newCharacter = new Character(data)
-    charactersContainer += newCharacter.renderCharacter() 
+    charactersContainer += newCharacter.renderCharacter()
     attachClicksToCreateCharacter()
 }
 
@@ -109,11 +100,11 @@ async function displayCharacter(e) {
     const data = await apiService.fetchCharacter(id)
     const character = new Character(data)
     charactersContainer = character.renderCharacter()
-    
+
 }
 
 // display movie
-async function displayMovie(id){
+async function displayMovie(id) {
     const data = await apiService.fetchMovie(id)
     const movie = new Movie(data)
     main.innerHTML = movie.renderMovie()
@@ -131,21 +122,18 @@ async function displayMovie(id){
         attachClicksToCharactersLinks()
     }
     document.getElementById('add-character').addEventListener('click', displayCharacterForm)
-    
+
 }
 
-function deleteMovie(){
-    // debugger;
-    let movieId = parseInt(event.target.dataset.id) // turn string into integer
+function deleteMovie() {
+
+    let movieId = parseInt(event.target.dataset.id)
 
     fetch(`${baseURL}/movies/${movieId}`, {
         method: "DELETE"
     })
-    //
     renderMovies();
     renderMovies();
-    
-    //this.location.reload() // not allowed single page apps; no page refreshes ** clear dom reattach initial item
 }
 
 function attachClicksToLinks() {
