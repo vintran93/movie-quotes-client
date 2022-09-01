@@ -1,6 +1,6 @@
 const apiService = new ApiService()
 let main = document.getElementById('main')
-let baseURL = 'https://movie-quotes-backend.herokuapp.com/'
+let baseURL = 'https://movie-quotes-app-api.herokuapp.com/'
 const charactersContainer = document.getElementById('characters-container');
 
 const init = () => {
