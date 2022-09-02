@@ -19,7 +19,7 @@ Checkout the Ruby on Rails section of the app [here](https://github.com/vintran9
 * Ruby on Rails
 
 ## Possible features to add
-
+* User sign up/login 
 * Search bar
 * Comments that persist to the database for movies/characters
 * Sort by character name 
