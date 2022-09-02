@@ -5,6 +5,10 @@ The Movie Quotes App was created using JavaScript for the frontend and Ruby on R
 
 Try the live version of the app [here](https://vintran93.github.io/movie-quotes-client/).
 
+## Backend
+
+Checkout the Ruby on Rails section of the app [here](https://github.com/vintran93/movie-quotes-backend).
+
 ## Built With
 
 * HTML
