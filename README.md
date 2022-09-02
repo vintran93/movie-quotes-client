@@ -18,6 +18,10 @@ Try the live version of the app [here](https://vintran93.github.io/movie-quotes-
 * Comments that persist to the database for movies/characters
 * Sort by character name 
 
+## Show some support
+
+Give a ⭐️ if you like this project!
+
 ## License
 
-This project is MIT licensed @ [vintran93]
+This project is [MIT](https://opensource.org/licenses/MIT) licensed @ [vintran93]
